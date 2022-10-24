@@ -1,1 +1,51 @@
+.App {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: rgb(109, 91, 58);
+  padding: 10px 30px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: #666;
+  padding: 10px 30px;
+  height: 90vh;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.action-buttons button {
+  width: 140px;
+  height: 60px;
+  margin: 5px;
+  font-size: 2rem;
+  border-radius: 15px;
+  background: rgba(161, 176, 23, 0.675);
+}
+
+.table-colors {
+  height: 300px;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
