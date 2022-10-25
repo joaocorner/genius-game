@@ -87,7 +87,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 - [ ] when clicking on the resume
   - [ ] the timer continues to count
   - [ ] if it was showing the colors before, it picks up where it left off
-- [ ] design
+- [x] design
 
 extras
 

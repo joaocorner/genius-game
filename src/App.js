@@ -2,6 +2,32 @@ import "./App.css";
 import Button from "./components/Button";
 
 function App() {
+  const generateColor = () => {
+    // generate random number between 1 and 4
+    const randNum = Math.floor(Math.random() * 4) + 1;
+    // return a color based on the random number
+    switch (randNum) {
+      case 1:
+        console.log("red");
+        break;
+      case 2:
+        console.log("blue");
+        break;
+      case 3:
+        console.log("green");
+        break;
+      case 4:
+        console.log("yellow");
+        break;
+      default:
+        console.log("error");
+    }
+  };
+
+  const initGame = () => {
+    generateColor();
+  };
+
   return (
     <div className="App">
       <header>
@@ -14,7 +40,7 @@ function App() {
       </header>
       <main>
         <div className="action-buttons">
-          <button>Start</button>
+          <button onClick={initGame}>Start</button>
           <button>Stop</button>
           <button>Reset</button>
         </div>
