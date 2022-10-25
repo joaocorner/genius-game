@@ -1,23 +1,27 @@
+import { useState } from "react";
 import "./App.css";
 import Button from "./components/Button";
 
 function App() {
+  const [generatedColors, setGeneratedColors] = useState([]);
+  const [round, setRound] = useState(2);
+
   const generateColor = () => {
     // generate random number between 1 and 4
     const randNum = Math.floor(Math.random() * 4) + 1;
     // return a color based on the random number
     switch (randNum) {
       case 1:
-        console.log("red");
+        setGeneratedColors([...generatedColors, "red"]);
         break;
       case 2:
-        console.log("blue");
+        setGeneratedColors([...generatedColors, "green"]);
         break;
       case 3:
-        console.log("green");
+        setGeneratedColors([...generatedColors, "blue"]);
         break;
       case 4:
-        console.log("yellow");
+        setGeneratedColors([...generatedColors, "yellow"]);
         break;
       default:
         console.log("error");
@@ -25,7 +29,15 @@ function App() {
   };
 
   const initGame = () => {
-    generateColor();
+    for (let i = 0; i < round; i++) {
+      setTimeout(() => {
+        generateColor();
+      }, 1000 * i);
+    }
+  };
+
+  const increaseRound = () => {
+    setRound(round + 1);
   };
 
   return (

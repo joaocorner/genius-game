@@ -61,7 +61,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 - [ ] when clicking start
   - [ ] trigger an activity start time
   - [ ] in loop:
-    - [ ] generate a random number between 1 and 4
+    - [x] generate a random number between 1 and 4
     - [ ] associate that number to a button style and show the player
     - [ ] in case of empty array
     - [ ] in case it already has value
