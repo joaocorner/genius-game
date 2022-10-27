@@ -3,9 +3,9 @@ import "./Button.css";
 const Button = (props) => {
   return (
     <button
-      className="btn-colors"
       onClick={props.onClick}
       style={{ backgroundColor: props.color }}
+      className={props.className}
     >
       {props.text}
     </button>
