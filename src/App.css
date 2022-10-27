@@ -19,6 +19,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   width: 100%;
   background: #666;
   padding: 10px 30px;
@@ -36,7 +37,7 @@ main {
   width: 140px;
   height: 60px;
   margin: 5px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border-radius: 15px;
   background: rgba(161, 176, 23, 0.675);
 }
