@@ -1,69 +1,169 @@
-import { useState } from "react";
-import "./App.css";
+import { useEffect, useState } from "react";
+import "./App.scss";
 import Button from "./components/Button";
 
 function App() {
-  const [start, setStart] = useState(false);
-  const [generatedNumber, setGeneratedNumber] = useState(0);
-  const [red, setRed] = useState(false);
-  const [green, setGreen] = useState(false);
-  const [blue, setBlue] = useState(false);
-  const [yellow, setYellow] = useState(false);
+  const [isOn, setIsOn] = useState(false);
+  const [maxScore, setMaxScore] = useState(0);
 
-  const initGame = () => {
-    // reseting all states
-    setStart(true);
-    setGeneratedNumber([]);
+  const colorList = ["darkred", "darkblue", "darkgreen", "goldenrod"];
 
-    // loop to generate random numbers and put them in an array
-    for (let i = 0; i < 15; i++) {
-      const randomColor = Math.floor(Math.random() * 4) + 1;
-      setGeneratedNumber((prev) => [...prev, randomColor]);
+  // reseting the state of the game, except for the max score
+  const initPlay = {
+    isDisplay: false,
+    colors: [],
+    score: 0,
+    userPlay: false,
+    userColors: [],
+  };
+
+  const [play, setPlay] = useState(initPlay);
+  const [flashColor, setFlashColor] = useState("");
+
+  const startHandle = () => {
+    setIsOn(true);
+  };
+
+  useEffect(() => {
+    if (isOn) {
+      setPlay({ ...initPlay, isDisplay: true });
+    } else {
+      setPlay(initPlay);
     }
+  }, [isOn]);
+
+  useEffect(() => {
+    if (isOn && play.isDisplay) {
+      let newColor = colorList[Math.floor(Math.random() * 4)];
+
+      const copyColors = [...play.colors];
+      copyColors.push(newColor);
+      setPlay({ ...play, colors: copyColors });
+    }
+  }, [isOn, play.isDisplay]);
+
+  useEffect(() => {
+    if (isOn && play.isDisplay && play.colors.length) {
+      displayColors();
+    }
+  }, [isOn, play.isDisplay, play.colors.length]);
+
+  const displayColors = async () => {
+    await timeout(1000);
+    for (let i = 0; i < play.colors.length; i++) {
+      setFlashColor(play.colors[i]);
+      await timeout(1000);
+      setFlashColor("");
+      await timeout(1000);
+
+      if (i === play.colors.length - 1) {
+        const copyColors = [...play.colors];
+
+        setPlay({
+          ...play,
+          isDisplay: false,
+          userPlay: true,
+          userColors: copyColors.reverse(),
+        });
+      }
+    }
+  };
+
+  const timeout = (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+
+  const colorClick = async (color) => {
+    if (!play.isDisplay && play.userPlay) {
+      const copyUserColors = [...play.userColors];
+      const lastColor = copyUserColors.pop();
+      setFlashColor(color);
+
+      if (color === lastColor) {
+        if (copyUserColors.length) {
+          setPlay({ ...play, userColors: copyUserColors });
+        } else {
+          await timeout(1000);
+          setPlay({
+            ...play,
+            isDisplay: true,
+            userPlay: false,
+            score: play.colors.length,
+            userColors: [],
+          });
+        }
+      } else {
+        await timeout(1000);
+        setPlay({ ...initPlay, score: play.colors.length });
+      }
+      await timeout(1000);
+      setFlashColor("");
+    }
+  };
+
+  //getting the max score from the local storage
+  useEffect(() => {
+    setMaxScore(localStorage.getItem("maxScore"));
+    if (maxScore) {
+      setPlay({ ...play, maxScore: JSON.parse(maxScore) });
+    }
+  }, []);
+
+  //setting the max score in the local storage and adjusting if needed
+  useEffect(() => {
+    if (play.score > maxScore) {
+      setMaxScore(play.score);
+      localStorage.setItem("maxScore", JSON.stringify(play.score));
+    }
+  }, [play.score]);
+
+  const closeHandle = () => {
+    setIsOn(false);
   };
 
   return (
     <div className="App">
       <header>
-        <h1>Genius Game</h1>
+        <h1>Genius Game </h1>
         <div>
-          <h2>Melhor rodada: 1</h2>
+          <h2>Melhor rodada: {maxScore}</h2>
         </div>
       </header>
       <main>
         <div className="action-buttons">
-          <button onClick={initGame} disabled={start}>
-            Iniciar
-          </button>
-          <button>Parar</button>
-          <button>Reiniciar</button>
+          {!isOn && !play.score && (
+            <button onClick={startHandle}>Iniciar</button>
+          )}
+        </div>
+        <div className="action-buttons">
+          {isOn && !play.isDisplay && !play.userPlay && play.score && (
+            <div className="container">
+              <h2>Fim de Jogo.. Você chegou até a {play.score}ª rodada</h2>
+              <button onClick={closeHandle}>Fechar</button>
+            </div>
+          )}
         </div>
 
         <div className="actual-info">
-          <h2>Rodada: 1</h2>
-        </div>
+          {isOn && !play.isDisplay && !play.userPlay && play.score && (
+            <h2>Placar Final: {play.score}</h2>
+          )}
 
-        <div className="table-colors ">
-          <Button
-            text="1"
-            color="red"
-            className={`btn-colors ${red ? "active" : ""}`}
-          />
-          <Button
-            text="2"
-            color="blue"
-            className={`btn-colors ${blue ? "active" : ""}`}
-          />
-          <Button
-            text="3"
-            color="green"
-            className={`btn-colors ${green ? "active" : ""}`}
-          />
-          <Button
-            text="4"
-            color="yellow"
-            className={`btn-colors ${yellow ? "active" : ""}`}
-          />
+          {isOn && (play.isDisplay || play.userPlay) && (
+            <h2>Placar atual: {play.score}</h2>
+          )}
+        </div>
+        <div className="table-colors">
+          {colorList.map((v) => (
+            <Button
+              key={v}
+              flash={flashColor === v}
+              color={v}
+              onClick={() => {
+                colorClick(v);
+              }}
+            />
+          ))}
         </div>
       </main>
     </div>

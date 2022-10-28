@@ -1,0 +1,35 @@
+.btn-colors {
+  width: 140px;
+  height: 140px;
+  margin: 5px;
+  font-size: 4rem;
+  border-radius: 15px;
+}
+
+.darkred {
+  background-color: darkred;
+  &.flash {
+    background-color: tomato;
+  }
+}
+
+.darkblue {
+  background-color: darkblue;
+  &.flash {
+    background-color: lightblue;
+  }
+}
+
+.darkgreen {
+  background-color: darkgreen;
+  &.flash {
+    background-color: lightgreen;
+  }
+}
+
+.goldenrod {
+  background-color: goldenrod;
+  &.flash {
+    background-color: yellow;
+  }
+}

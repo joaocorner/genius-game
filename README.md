@@ -8,7 +8,6 @@ Project developed to improve concepts in React.
 
 [Demo](https://joaocorner.github.io/genius-game/)
 
-![Preview Mobile](https://raw.githubusercontent.com/joaocorner/genius-game/main/public/img/preview-mobile.png)
 ![Preview](https://raw.githubusercontent.com/joaocorner/genius-game/main/public/img/preview.png)
 
 ## Sumary
@@ -27,7 +26,7 @@ Project developed to improve concepts in React.
 ### Made using
 
 - React
-- CSS
+- SCSS
 
 ### Run in your computer
 
@@ -54,43 +53,19 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 ## To-do list
 
-- [ ] when loading the page
-  - [ ] show score/time saved in history (local storage)
-  - [ ] provide customization for the game
-    - [ ] insert a time to pass the colors
-- [ ] when clicking start
-  - [ ] trigger an activity start time
-  - [ ] in loop:
-    - [x] generate a random number between 1 and 4
-    - [ ] associate that number to a button style and show the player
-    - [ ] in case of empty array
-    - [ ] in case it already has value
-      - [ ] fetch the values ​​and display them with a spaced time
-      - [ ] generate a random number between 1 and 4
-      - [ ] associate that number to a button style and show the player
-    - [ ] receive user input by clicking in the same order as the displayed value
-    - [ ] compare input value with stored value
-    - [ ] if the value is equal:
-      - [ ] add a point to the user
-      - [ ] move to the next comparison
-    - [ ] if the value is different
-      - [ ] end of the game
-      - [ ] end time
-      - [ ] save the maximum score achieved
-- [ ] when clicking reset
-  - [ ] ask if you really want to reset the record
-  - [ ] if so, delete the score from the local storage, otherwise return
-- [ ] when clicking stop
-  - [ ] button changes to resume
-  - [ ] pauses the timer
-  - [ ] if running color execution, pause
-- [ ] when clicking on the resume
-  - [ ] the timer continues to count
-  - [ ] if it was showing the colors before, it picks up where it left off
+- [x] when loading the page
+  - [x] show score/time saved in history (local storage)
+- [x] when clicking start
+  - [x] resetting the values
+  - [x] generate a random number between 1 and 4
+  - [x] associate that number to a button style and show it
+    - [x] fetch the values ​​and display them with a spaced time
+  - [x] receive user input by clicking in the same order as the displayed value
+  - [x] compare input value with stored value
+  - [x] if the value is equal:
+    - [x] add a point to the user
+    - [x] move to the next comparison
+  - [x] if the value is different
+    - [x] end of the game
+    - [x] save the maximum score achieved
 - [x] design
-
-extras
-
-- [ ] play sound on click
-- [ ] use shortcut keys
-- [ ] choose difficulty

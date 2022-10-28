@@ -23,23 +23,40 @@ main {
   width: 100%;
   background: #666;
   padding: 10px 30px;
-  height: 90vh;
+  height: 93vh;
 }
 
 .action-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   margin: 10px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 30px;
 }
 
 .action-buttons button {
   width: 140px;
   height: 60px;
-  margin: 5px;
+  margin: 30px;
   font-size: 1.5rem;
   border-radius: 15px;
   background: rgba(161, 176, 23, 0.675);
+}
+
+.actual-info {
+  height: 30px;
+}
+
+.hidden-message {
+  display: none;
 }
 
 .table-colors {

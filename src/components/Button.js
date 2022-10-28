@@ -1,19 +1,12 @@
-import "./Button.css";
+import "./Button.scss";
 
-const Button = (props) => {
+const Button = ({ color, onClick, flash }) => {
   return (
     <button
-      onClick={props.onClick}
-      style={{ backgroundColor: props.color }}
-      className={props.className}
-    >
-      {props.text}
-    </button>
+      onClick={onClick}
+      className={`btn-colors ${color} ${flash ? "flash" : ""}`}
+    ></button>
   );
-};
-
-Button.defaultProps = {
-  color: "steelblue",
 };
 
 export default Button;
