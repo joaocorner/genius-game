@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/genius-game/static/css/main.51edc8fd.css",
-    "main.js": "/genius-game/static/js/main.ab92732f.js",
+    "main.css": "/genius-game/static/css/main.b3c03436.css",
+    "main.js": "/genius-game/static/js/main.6fbd4ef8.js",
     "index.html": "/genius-game/index.html",
-    "main.51edc8fd.css.map": "/genius-game/static/css/main.51edc8fd.css.map",
-    "main.ab92732f.js.map": "/genius-game/static/js/main.ab92732f.js.map"
+    "main.b3c03436.css.map": "/genius-game/static/css/main.b3c03436.css.map",
+    "main.6fbd4ef8.js.map": "/genius-game/static/js/main.6fbd4ef8.js.map"
   },
   "entrypoints": [
-    "static/css/main.51edc8fd.css",
-    "static/js/main.ab92732f.js"
+    "static/css/main.b3c03436.css",
+    "static/js/main.6fbd4ef8.js"
   ]
 }
