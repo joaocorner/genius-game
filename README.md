@@ -8,7 +8,7 @@ Project developed to improve concepts in React.
 
 [Demo](https://joaocorner.github.io/genius-game/)
 
-![Preview](https://raw.githubusercontent.com/joaocorner/genius-game/main/public/img/preview.png)
+![Preview](https://raw.githubusercontent.com/joaocorner/genius-game/main/public/img/preview.gif)
 
 ## Sumary
 
